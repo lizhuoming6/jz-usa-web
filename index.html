@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JINGZHENG Equipment USA LLC — Intelligent Reaction Molding</title>
+  <meta name="description" content="JINGZHENG Equipment USA delivers advanced polyurethane foam dispensing systems and intelligent data platforms to automotive seating, refrigeration, and insulation manufacturers across North America." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #040d1f;
+      --navy2: #071428;
+      --blue-mid: #0a2047;
+      --accent: #1d8cf8;
+      --accent2: #00d4ff;
+      --accent-glow: rgba(29,140,248,0.35);
+      --text: #e8eaf0;
+      --text-muted: #8899b0;
+      --glass: rgba(255,255,255,0.04);
+      --glass-border: rgba(255,255,255,0.08);
+      --radius: 14px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--navy);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── CANVAS BACKGROUND ── */
+    #bg-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5vw;
+      height: 68px;
+      background: rgba(4,13,31,0.82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--glass-border);
+      transition: background 0.3s;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: #fff;
+      letter-spacing: -0.5px;
+      flex-shrink: 0;
+    }
+
+    .logo-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.15;
+    }
+    .logo-text span { display: block; font-size: 10px; font-weight: 400; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 14px;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent2); }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff !important;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-weight: 500 !important;
+      transition: opacity 0.2s !important;
+    }
+    .nav-cta:hover { opacity: 0.85; color: #fff !important; }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 6vw 80px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(29,140,248,0.12);
+      border: 1px solid rgba(29,140,248,0.3);
+      border-radius: 50px;
+      padding: 6px 16px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent2);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent2);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.3); }
+    }
+
+    .hero-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+    .hero-title .grad {
+      background: linear-gradient(90deg, var(--accent), var(--accent2), #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      max-width: 640px;
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 44px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px var(--accent-glow);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px var(--accent-glow); }
+
+    .btn-ghost {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      color: var(--text);
+      padding: 14px 32px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      backdrop-filter: blur(8px);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--accent); background: rgba(29,140,248,0.08); }
+
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      margin-top: 72px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-label { font-size: 12px; color: var(--text-muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+    /* ── SECTIONS COMMON ── */
+    section { position: relative; z-index: 1; padding: 96px 6vw; }
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+    .section-desc {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 600px;
+    }
+    .section-head { margin-bottom: 60px; }
+
+    /* ── WHAT WE DO ── */
+    #what {
+      background: linear-gradient(180deg, var(--navy) 0%, var(--navy2) 100%);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .pillar-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 36px;
+      transition: border-color 0.3s, transform 0.3s;
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+    .pillar-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      border-radius: 2px 2px 0 0;
+    }
+    .pillar-card.blue::before { background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+    .pillar-card.purple::before { background: linear-gradient(90deg, #a78bfa, #7c3aed); }
+
+    .pillar-card:hover { border-color: rgba(29,140,248,0.3); transform: translateY(-4px); }
+
+    .pillar-icon {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .pillar-icon.blue { background: rgba(29,140,248,0.15); }
+    .pillar-icon.purple { background: rgba(167,139,250,0.15); }
+
+    .pillar-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .pillar-card p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; }
+
+    .tag-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 50px;
+      border: 1px solid var(--glass-border);
+      color: var(--text-muted);
+    }
+    .tag.blue { border-color: rgba(29,140,248,0.3); color: var(--accent2); background: rgba(29,140,248,0.08); }
+    .tag.purple { border-color: rgba(167,139,250,0.3); color: #c4b5fd; background: rgba(167,139,250,0.08); }
+
+    /* ── INDUSTRIES ── */
+    #industries { background: var(--navy2); }
+
+    .industry-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .industry-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      transition: border-color 0.3s, transform 0.3s;
+      backdrop-filter: blur(10px);
+    }
+    .industry-card:hover { border-color: rgba(29,140,248,0.35); transform: translateY(-4px); }
+
+    .industry-icon {
+      font-size: 36px;
+      margin-bottom: 16px;
+    }
+    .industry-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .industry-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ── SMART PLATFORM ── */
+    #platform {
+      background: linear-gradient(180deg, var(--navy2) 0%, var(--navy) 100%);
+    }
+
+    .platform-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 28px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      backdrop-filter: blur(10px);
+      transition: border-color 0.3s;
+    }
+    .feature-card:hover { border-color: rgba(0,212,255,0.3); }
+
+    .feature-num {
+      flex-shrink: 0;
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: rgba(29,140,248,0.12);
+      border: 1px solid rgba(29,140,248,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent2);
+    }
+
+    .feature-card h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .feature-card p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ── DIVIDER ── */
+    .glow-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      margin: 0 6vw;
+      opacity: 0.4;
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--navy); }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .contact-info h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .contact-info p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 36px; }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .info-icon {
+      width: 40px; height: 40px;
+      flex-shrink: 0;
+      background: rgba(29,140,248,0.1);
+      border: 1px solid rgba(29,140,248,0.2);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+    .info-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+    .info-val { font-size: 0.95rem; color: var(--text); }
+    .info-val a { color: var(--accent2); text-decoration: none; }
+    .info-val a:hover { text-decoration: underline; }
+
+    .contact-form {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 40px;
+      backdrop-filter: blur(10px);
+    }
+    .contact-form h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      padding: 11px 14px;
+      color: var(--text);
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--accent); }
+    .form-group select option { background: #0a2047; }
+    .form-group textarea { min-height: 100px; }
+
+    .form-submit {
+      width: 100%;
+      padding: 13px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .form-submit:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--glass-border);
+      padding: 32px 6vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-left { font-size: 13px; color: var(--text-muted); }
+    .footer-left strong { color: var(--text); }
+    .footer-right { font-size: 12px; color: var(--text-muted); }
+
+    /* ── SCROLL FADE-IN ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .two-col, .industry-grid, .platform-grid, .contact-wrap { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hero-stats { gap: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ANIMATED BACKGROUND -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <div class="logo-icon">JZ</div>
+    <div class="logo-text">
+      JINGZHENG Equipment
+      <span>USA LLC</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#what">Solutions</a></li>
+    <li><a href="#industries">Industries</a></li>
+    <li><a href="#platform">Smart Platform</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-badge">Austin, TX · Serving North America</div>
+
+  <h1 class="hero-title">
+    Intelligent<br/>
+    <span class="grad">Reaction Molding</span><br/>
+    for Modern Manufacturing
+  </h1>
+
+  <p class="hero-sub">
+    JINGZHENG Equipment USA delivers advanced polyurethane foam dispensing systems — now augmented with real-time data acquisition, process analytics, and AI-assisted diagnostics to transform your production line into a smart manufacturing ecosystem.
+  </p>
+
+  <div class="hero-actions">
+    <a href="#contact" class="btn-primary">Request a Consultation</a>
+    <a href="#platform" class="btn-ghost">Explore Smart Platform →</a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">20+</div>
+      <div class="stat-label">Years in Foam Equipment</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Key Industries Served</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">Real-Time</div>
+      <div class="stat-label">Data Intelligence</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">24 / 7</div>
+      <div class="stat-label">Process Monitoring</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section id="what">
+  <div class="section-head fade-up">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title">Hardware Precision Meets<br/>Software Intelligence</h2>
+    <p class="section-desc">We go beyond selling equipment. JINGZHENG USA combines world-class reaction molding hardware with a proprietary data platform that monitors, analyzes, and optimizes every shot on your line.</p>
+  </div>
+
+  <div class="two-col">
+    <div class="pillar-card blue fade-up">
+      <div class="pillar-icon blue">⚙️</div>
+      <h3>Reaction Molding Equipment</h3>
+      <p>High-precision polyurethane foam dispensing machines engineered for automotive seating, refrigerator cavities, and rigid insulation panel production. Repeatable shot accuracy, robust construction, and easy integration into existing carousel or linear lines.</p>
+      <div class="tag-list">
+        <span class="tag blue">Multi-Component Mixing</span>
+        <span class="tag blue">High-Pressure Dispensing</span>
+        <span class="tag blue">Mold Carrier Lines</span>
+        <span class="tag blue">PLC-Controlled</span>
+      </div>
+    </div>
+
+    <div class="pillar-card purple fade-up">
+      <div class="pillar-icon purple">🧠</div>
+      <h3>Smart Manufacturing Platform</h3>
+      <p>Our proprietary data acquisition layer sits on top of any foam machine — new or legacy — turning raw process signals into actionable insights. Track every parameter, predict failures before they happen, and benchmark quality shift over shift.</p>
+      <div class="tag-list">
+        <span class="tag purple">Real-Time OPC / PLC Data</span>
+        <span class="tag purple">AI Fault Diagnostics</span>
+        <span class="tag purple">Cloud Dashboard</span>
+        <span class="tag purple">Quality Traceability</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- INDUSTRIES -->
+<section id="industries">
+  <div class="section-head fade-up">
+    <div class="section-label">Industries Served</div>
+    <h2 class="section-title">Built for the Processes<br/>That Demand Precision</h2>
+    <p class="section-desc">Every foam application has unique chemistry, cycle times, and quality tolerances. Our systems are configured and tuned specifically for your industry.</p>
+  </div>
+
+  <div class="industry-grid">
+    <div class="industry-card fade-up">
+      <div class="industry-icon">🚗</div>
+      <h3>Automotive Seating</h3>
+      <p>From headrests to full seat cushions, our equipment handles flexible and semi-rigid formulations with the shot-weight consistency and cycle speed that automotive tier suppliers demand. Full traceability per VIN-compatible seat.</p>
+    </div>
+
+    <div class="industry-card fade-up">
+      <div class="industry-icon">❄️</div>
+      <h3>Refrigeration & Appliances</h3>
+      <p>Cavity fill for refrigerators, freezers, and water heaters requires void-free, dimensionally stable rigid foam. Our systems deliver precise mix ratios and injection pressure to meet insulation performance specs every cycle.</p>
+    </div>
+
+    <div class="industry-card fade-up">
+      <div class="industry-icon">🏗️</div>
+      <h3>Insulation Panels & Building Materials</h3>
+      <p>Continuous and batch panel lines for PIR / PUR rigid foam require consistent cream time and surface quality across high-volume runs. Our dispensing heads and data monitoring ensure board-to-board uniformity.</p>
+    </div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- SMART PLATFORM -->
+<section id="platform">
+  <div class="section-head fade-up">
+    <div class="section-label">Smart Platform</div>
+    <h2 class="section-title">From Machine Data<br/>to Manufacturing Intelligence</h2>
+    <p class="section-desc">Our IIoT platform connects directly to your foam machine's PLC, aggregates process parameters in real time, and surfaces insights through an intuitive web dashboard — no IT department required.</p>
+  </div>
+
+  <div class="platform-grid">
+    <div class="feature-card fade-up">
+      <div class="feature-num">01</div>
+      <div>
+        <h4>Real-Time Parameter Capture</h4>
+        <p>Temperature, pressure, flow rate, and shot weight are logged at millisecond resolution for every injection cycle. Full parameter history — searchable, exportable, and audit-ready.</p>
+      </div>
+    </div>
+
+    <div class="feature-card fade-up">
+      <div class="feature-num">02</div>
+      <div>
+        <h4>AI-Assisted Fault Diagnostics</h4>
+        <p>Our rule engine cross-correlates pressure drop, flow deviation, and temperature variance to pinpoint root causes — valve wear, clogged filter, raw material inconsistency — before defects reach the end of the line.</p>
+      </div>
+    </div>
+
+    <div class="feature-card fade-up">
+      <div class="feature-num">03</div>
+      <div>
+        <h4>Process Quality Traceability</h4>
+        <p>Every shot is timestamped and linked to mold ID, operator, material lot, and machine state. One-click reports for customer audits, IATF 16949 compliance, or internal quality reviews.</p>
+      </div>
+    </div>
+
+    <div class="feature-card fade-up">
+      <div class="feature-num">04</div>
+      <div>
+        <h4>Cloud or On-Premise Deployment</h4>
+        <p>Deploy our platform on a local industrial PC for air-gapped environments, or connect to the cloud for multi-site visibility. Retrofit-compatible with existing machines — no hardware rip-and-replace needed.</p>
+      </div>
+    </div>
+
+    <div class="feature-card fade-up">
+      <div class="feature-num">05</div>
+      <div>
+        <h4>Shift & OEE Reporting</h4>
+        <p>Automated daily and weekly reports show production output, downtime breakdown, and quality yield by shift. Identify your top loss categories without combing through raw logs.</p>
+      </div>
+    </div>
+
+    <div class="feature-card fade-up">
+      <div class="feature-num">06</div>
+      <div>
+        <h4>Remote Monitoring & Alerts</h4>
+        <p>Get notified the moment a parameter drifts outside spec — by email, SMS, or dashboard alert. Our team can also access machine telemetry remotely to support troubleshooting without a site visit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrap">
+    <div class="contact-info fade-up">
+      <div class="section-label">Contact</div>
+      <h2>Let's Talk About<br/>Your Process</h2>
+      <p>Whether you're evaluating new equipment, looking to retrofit your existing foam line with smart monitoring, or just want to understand what's possible — we're happy to start a conversation.</p>
+
+      <div class="info-item">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">Address</div>
+          <div class="info-val">5900 Balcones Drive STE 100<br/>Austin, TX 78731<br/>Travis County, USA</div>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-label">Phone</div>
+          <div class="info-val"><a href="tel:+15188892008">(518) 889-2008</a></div>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">✉️</div>
+        <div>
+          <div class="info-label">Email</div>
+          <div class="info-val"><a href="mailto:joe@jz-usa.com">joe@jz-usa.com</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form fade-up">
+      <h3>Send Us a Message</h3>
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" name="first_name" placeholder="John" required />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" name="last_name" placeholder="Smith" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Company</label>
+          <input type="text" name="company" placeholder="Your Company Name" />
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" name="email" placeholder="you@company.com" required />
+        </div>
+        <div class="form-group">
+          <label>Industry</label>
+          <select name="industry">
+            <option value="">Select your industry</option>
+            <option value="automotive">Automotive Seating</option>
+            <option value="refrigeration">Refrigeration / Appliances</option>
+            <option value="insulation">Insulation Panels / Building Materials</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea name="message" placeholder="Tell us about your process or what you're looking for…"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Message →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    © 2025 <strong>JINGZHENG Equipment USA LLC</strong>. All rights reserved.
+  </div>
+  <div class="footer-right">
+    5900 Balcones Dr STE 100, Austin TX 78731 &nbsp;·&nbsp; <a href="tel:+15188892008" style="color:var(--text-muted);text-decoration:none;">(518) 889-2008</a> &nbsp;·&nbsp; <a href="mailto:joe@jz-usa.com" style="color:var(--text-muted);text-decoration:none;">joe@jz-usa.com</a>
+  </div>
+</footer>
+
+<script>
+/* ── PARTICLE CANVAS ── */
+(function () {
+  const canvas = document.getElementById('bg-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [], animId;
+
+  const COLORS = ['rgba(29,140,248,', 'rgba(0,212,255,', 'rgba(167,139,250,'];
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  function rand(min, max) { return Math.random() * (max - min) + min; }
+
+  function createParticle() {
+    return {
+      x: rand(0, W), y: rand(0, H),
+      r: rand(1, 2.5),
+      vx: rand(-0.18, 0.18), vy: rand(-0.18, 0.18),
+      alpha: rand(0.15, 0.55),
+      color: COLORS[Math.floor(Math.random() * COLORS.length)]
+    };
+  }
+
+  function init() {
+    particles = [];
+    const count = Math.min(Math.floor(W * H / 8000), 140);
+    for (let i = 0; i < count; i++) particles.push(createParticle());
+  }
+
+  function drawLines() {
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 130) {
+          const a = (1 - dist / 130) * 0.12;
+          ctx.strokeStyle = `rgba(29,140,248,${a})`;
+          ctx.lineWidth = 0.7;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  function tick() {
+    ctx.clearRect(0, 0, W, H);
+    drawLines();
+    particles.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > W) p.vx *= -1;
+      if (p.y < 0 || p.y > H) p.vy *= -1;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color + p.alpha + ')';
+      ctx.fill();
+    });
+    animId = requestAnimationFrame(tick);
+  }
+
+  window.addEventListener('resize', () => { resize(); init(); });
+  resize(); init(); tick();
+})();
+
+/* ── SCROLL FADE-IN ── */
+(function () {
+  const els = document.querySelectorAll('.fade-up');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  els.forEach(el => obs.observe(el));
+})();
+
+/* ── FORM SUBMIT (Formspree fallback) ── */
+document.querySelector('form').addEventListener('submit', function(e) {
+  const action = this.getAttribute('action');
+  if (action.includes('YOUR_FORM_ID')) {
+    e.preventDefault();
+    alert('To enable the contact form, sign up at formspree.io and replace YOUR_FORM_ID in the HTML.\n\nFor now, please email joe@jz-usa.com directly.');
+  }
+});
+</script>
+
+</body>
+</html>
