@@ -12,16 +12,14 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy: #040d1f;
-      --navy2: #071428;
-      --blue-mid: #0a2047;
-      --accent: #1d8cf8;
-      --accent2: #00d4ff;
-      --accent-glow: rgba(29,140,248,0.35);
-      --text: #e8eaf0;
-      --text-muted: #8899b0;
-      --glass: rgba(255,255,255,0.04);
-      --glass-border: rgba(255,255,255,0.08);
+      --navy: #04080f;
+      --navy2: #060c15;
+      --accent: #7ba7ff;
+      --accent-glow: rgba(123,167,255,0.2);
+      --text: #e8ecf5;
+      --text-muted: #6a7585;
+      --glass: rgba(255,255,255,0.03);
+      --glass-border: rgba(255,255,255,0.07);
       --radius: 14px;
     }
 
@@ -40,7 +38,7 @@
       inset: 0;
       z-index: 0;
       pointer-events: none;
-      opacity: 0.85;
+      opacity: 0.6;
     }
 
     /* ── NAV ── */
@@ -68,7 +66,7 @@
 
     .logo-icon {
       width: 36px; height: 36px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      background: linear-gradient(135deg, var(--accent), var(--accent));
       border-radius: 8px;
       display: flex;
       align-items: center;
@@ -102,10 +100,10 @@
       color: var(--text-muted);
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--accent2); }
+    .nav-links a:hover { color: var(--accent); }
 
     .nav-cta {
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      background: linear-gradient(135deg, var(--accent), var(--accent));
       color: #fff !important;
       padding: 8px 20px;
       border-radius: 8px;
@@ -131,13 +129,13 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(29,140,248,0.12);
-      border: 1px solid rgba(29,140,248,0.3);
+      background: rgba(123,167,255,0.08);
+      border: 1px solid rgba(123,167,255,0.2);
       border-radius: 50px;
       padding: 6px 16px;
       font-size: 12px;
       font-weight: 500;
-      color: var(--accent2);
+      color: var(--accent);
       letter-spacing: 0.06em;
       text-transform: uppercase;
       margin-bottom: 32px;
@@ -146,7 +144,7 @@
       content: '';
       width: 6px; height: 6px;
       border-radius: 50%;
-      background: var(--accent2);
+      background: var(--accent);
       animation: pulse 2s infinite;
     }
     @keyframes pulse {
@@ -163,7 +161,7 @@
       margin-bottom: 24px;
     }
     .hero-title .grad {
-      background: linear-gradient(90deg, var(--accent), var(--accent2), #a78bfa);
+      background: linear-gradient(90deg, #ffffff, var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -185,7 +183,7 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      background: linear-gradient(135deg, var(--accent), var(--accent));
       color: #fff;
       padding: 14px 32px;
       border-radius: 10px;
@@ -209,7 +207,7 @@
       backdrop-filter: blur(8px);
       transition: border-color 0.2s, background 0.2s;
     }
-    .btn-ghost:hover { border-color: var(--accent); background: rgba(29,140,248,0.08); }
+    .btn-ghost:hover { border-color: var(--accent); background: rgba(123,167,255,0.05); }
 
     .hero-stats {
       display: flex;
@@ -223,7 +221,7 @@
       font-family: 'Bricolage Grotesque', sans-serif;
       font-size: 2rem;
       font-weight: 700;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      background: linear-gradient(90deg, var(--accent), var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -283,10 +281,10 @@
       height: 2px;
       border-radius: 2px 2px 0 0;
     }
-    .pillar-card.blue::before { background: linear-gradient(90deg, var(--accent), var(--accent2)); }
-    .pillar-card.purple::before { background: linear-gradient(90deg, #a78bfa, #7c3aed); }
+    .pillar-card.blue::before { background: linear-gradient(90deg, var(--accent), var(--accent)); }
+    .pillar-card.purple::before { background: linear-gradient(90deg, var(--accent), rgba(123,167,255,0.4)); }
 
-    .pillar-card:hover { border-color: rgba(29,140,248,0.3); transform: translateY(-4px); }
+    .pillar-card:hover { border-color: rgba(123,167,255,0.2); transform: translateY(-4px); }
 
     .pillar-card h3 {
       font-family: 'Bricolage Grotesque', sans-serif;
@@ -304,8 +302,8 @@
       border: 1px solid var(--glass-border);
       color: var(--text-muted);
     }
-    .tag.blue { border-color: rgba(29,140,248,0.3); color: var(--accent2); background: rgba(29,140,248,0.08); }
-    .tag.purple { border-color: rgba(167,139,250,0.3); color: #c4b5fd; background: rgba(167,139,250,0.08); }
+    .tag.blue { border-color: rgba(123,167,255,0.2); color: var(--accent); background: rgba(123,167,255,0.05); }
+    .tag.purple { border-color: rgba(123,167,255,0.2); color: var(--accent); background: rgba(123,167,255,0.05); }
 
     /* ── INDUSTRIES ── */
     #industries { background: transparent; }
@@ -324,7 +322,7 @@
       transition: border-color 0.3s, transform 0.3s;
       backdrop-filter: blur(10px);
     }
-    .industry-card:hover { border-color: rgba(29,140,248,0.35); transform: translateY(-4px); }
+    .industry-card:hover { border-color: rgba(123,167,255,0.18); transform: translateY(-4px); }
 
     .industry-card h3 {
       font-family: 'Bricolage Grotesque', sans-serif;
@@ -364,15 +362,15 @@
       flex-shrink: 0;
       width: 36px; height: 36px;
       border-radius: 8px;
-      background: rgba(29,140,248,0.12);
-      border: 1px solid rgba(29,140,248,0.2);
+      background: rgba(123,167,255,0.08);
+      border: 1px solid rgba(123,167,255,0.15);
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: 'Bricolage Grotesque', sans-serif;
       font-size: 13px;
       font-weight: 700;
-      color: var(--accent2);
+      color: var(--accent);
     }
 
     .feature-card h4 {
@@ -417,7 +415,7 @@
     }
     .info-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
     .info-val { font-size: 0.95rem; color: var(--text); }
-    .info-val a { color: var(--accent2); text-decoration: none; }
+    .info-val a { color: var(--accent); text-decoration: none; }
     .info-val a:hover { text-decoration: underline; }
 
     .contact-form {
@@ -462,7 +460,7 @@
     .form-submit {
       width: 100%;
       padding: 13px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      background: linear-gradient(135deg, var(--accent), var(--accent));
       color: #fff;
       font-size: 15px;
       font-weight: 600;
@@ -712,8 +710,8 @@
       <p>When the machine tells operators exactly what to do and why, you need fewer experts on the floor. Reduce overtime, ease onboarding, and run more shifts with smaller, more efficient teams.</p>
     </div>
 
-    <div class="pillar-card fade-up" style="text-align:center; border-color: rgba(52,211,153,0.2);">
-      <div style="position:absolute;top:0;left:0;right:0;height:2px;border-radius:2px 2px 0 0;background:linear-gradient(90deg,#34d399,#059669);"></div>
+    <div class="pillar-card fade-up" style="text-align:center; border-color: rgba(123,167,255,0.2);">
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;border-radius:2px 2px 0 0;background:linear-gradient(90deg,var(--accent),rgba(123,167,255,0.4));"></div>
       <h3 style="margin-bottom:12px;">Happier Operators</h3>
       <p>People do their best work when they understand what's happening around them. Our platform gives every operator on the floor clear, real-time visibility — turning stressful guesswork into confident, data-guided decisions.</p>
     </div>
@@ -913,7 +911,7 @@ void main() {
     return [r, g, b];
   }
 
-  const colors = ['#1d8cf8','#00d4ff','#7c3aed'];
+  const colors = ['#1a2e50','#0e1c35','#243858'];
   const colorArr = colors.flatMap(hexToRgb);
 
   function resize() {
@@ -926,8 +924,8 @@ void main() {
   resize();
 
   gl.uniform3fv(uColorStops, colorArr);
-  gl.uniform1f(uAmplitude, 2.2);
-  gl.uniform1f(uBlend, 1.2);
+  gl.uniform1f(uAmplitude, 1.4);
+  gl.uniform1f(uBlend, 0.7);
 
   let t = 0;
   function tick(ms) {
@@ -1108,11 +1106,11 @@ void main(){
 
   gl.uniform2f(uFocal, 0.5, 0.5);
   gl.uniform2f(uRotation, 1.0, 0.0);
-  gl.uniform1f(uDensity, 1.2);
-  gl.uniform1f(uHueShift, 210.0);
-  gl.uniform1f(uSpeed, 1.0);
-  gl.uniform1f(uGlow, 0.45);
-  gl.uniform1f(uSat, 0.8);
+  gl.uniform1f(uDensity, 1.0);
+  gl.uniform1f(uHueShift, 0.0);
+  gl.uniform1f(uSpeed, 0.6);
+  gl.uniform1f(uGlow, 0.55);
+  gl.uniform1f(uSat, 0.0);
   gl.uniform1i(uRepulsion, 1);
   gl.uniform1f(uTwinkle, 0.5);
   gl.uniform1f(uRotSpd, 0.04);
