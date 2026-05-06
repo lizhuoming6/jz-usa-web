@@ -53,7 +53,7 @@
       justify-content: space-between;
       padding: 0 5vw;
       height: 68px;
-      background: rgba(4,13,31,0.82);
+      background: rgba(4,13,31,0.45);
       backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--glass-border);
       transition: background 0.3s;
@@ -83,8 +83,8 @@
 
     .logo-text {
       font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 15px;
-      font-weight: 600;
+      font-size: 17px;
+      font-weight: 700;
       color: var(--text);
       line-height: 1.15;
     }
@@ -515,7 +515,6 @@
 <!-- NAV -->
 <nav>
   <a href="#hero" class="nav-logo">
-    <div class="logo-icon">JZ</div>
     <div class="logo-text">
       JINGZHENG Equipment
       <span>USA LLC</span>
@@ -704,20 +703,17 @@
 
   <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:28px;">
     <div class="pillar-card blue fade-up" style="text-align:center;">
-      <div style="font-size:48px; margin-bottom:16px;">📈</div>
       <h3 style="margin-bottom:12px;">Higher Yield Rate</h3>
       <p>Our AI catches process drift before it creates defects. Fewer bad parts, less rework, less scrap — your first-pass quality rate goes up and stays up.</p>
     </div>
 
     <div class="pillar-card purple fade-up" style="text-align:center;">
-      <div style="font-size:48px; margin-bottom:16px;">💡</div>
       <h3 style="margin-bottom:12px;">Lower Labor Dependency</h3>
       <p>When the machine tells operators exactly what to do and why, you need fewer experts on the floor. Reduce overtime, ease onboarding, and run more shifts with smaller, more efficient teams.</p>
     </div>
 
     <div class="pillar-card fade-up" style="text-align:center; border-color: rgba(52,211,153,0.2);">
       <div style="position:absolute;top:0;left:0;right:0;height:2px;border-radius:2px 2px 0 0;background:linear-gradient(90deg,#34d399,#059669);"></div>
-      <div style="font-size:48px; margin-bottom:16px;">😊</div>
       <h3 style="margin-bottom:12px;">Happier Operators</h3>
       <p>People do their best work when they understand what's happening around them. Our platform gives every operator on the floor clear, real-time visibility — turning stressful guesswork into confident, data-guided decisions.</p>
     </div>
@@ -937,7 +933,7 @@ void main() {
   function tick(ms) {
     t = ms * 0.001;
     gl.clear(gl.COLOR_BUFFER_BIT);
-    gl.uniform1f(uTime, t * 1.4);
+    gl.uniform1f(uTime, t * 0.35);
     gl.drawArrays(gl.TRIANGLES, 0, 3);
     requestAnimationFrame(tick);
   }
