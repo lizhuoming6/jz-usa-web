@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JINGZHENG Equipment USA LLC — Intelligent Reaction Molding</title>
-  <meta name="description" content="JINGZHENG Equipment USA delivers advanced polyurethane foam dispensing systems and intelligent data platforms to automotive seating, refrigeration, and insulation manufacturers across North America." />
+  <title>JINGZHENG Equipment USA — AI-Powered Foam Manufacturing Intelligence</title>
+  <meta name="description" content="JINGZHENG Equipment USA brings Silicon Valley AI to polyurethane foam manufacturing — higher yield, lower labor costs, and smarter process control for automotive seating, refrigeration, and insulation producers across North America." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -40,6 +40,7 @@
       inset: 0;
       z-index: 0;
       pointer-events: none;
+      opacity: 0.85;
     }
 
     /* ── NAV ── */
@@ -256,7 +257,7 @@
 
     /* ── WHAT WE DO ── */
     #what {
-      background: linear-gradient(180deg, var(--navy) 0%, var(--navy2) 100%);
+      background: transparent;
     }
 
     .two-col {
@@ -319,7 +320,7 @@
     .tag.purple { border-color: rgba(167,139,250,0.3); color: #c4b5fd; background: rgba(167,139,250,0.08); }
 
     /* ── INDUSTRIES ── */
-    #industries { background: var(--navy2); }
+    #industries { background: transparent; }
 
     .industry-grid {
       display: grid;
@@ -350,9 +351,11 @@
     .industry-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.65; }
 
     /* ── SMART PLATFORM ── */
-    #platform {
-      background: linear-gradient(180deg, var(--navy2) 0%, var(--navy) 100%);
-    }
+    #platform { background: transparent; }
+
+    /* ── GALAXY CANVAS (hero overlay) ── */
+    #galaxy-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; display: block; }
+    .hero-content { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; }
 
     .platform-grid {
       display: grid;
@@ -405,7 +408,7 @@
     }
 
     /* ── CONTACT ── */
-    #contact { background: var(--navy); }
+    #contact { background: transparent; }
 
     .contact-wrap {
       display: grid;
@@ -555,39 +558,42 @@
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-badge">Austin, TX · Serving North America</div>
+  <canvas id="galaxy-canvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-badge">Silicon Valley AI · Austin, TX · Serving North America</div>
 
-  <h1 class="hero-title">
-    Intelligent<br/>
-    <span class="grad">Reaction Molding</span><br/>
-    for Modern Manufacturing
-  </h1>
+    <h1 class="hero-title">
+      We Make Foam Machines<br/>
+      <span class="grad">Think, Learn and Optimize</span><br/>
+      Themselves
+    </h1>
 
-  <p class="hero-sub">
-    JINGZHENG Equipment USA delivers advanced polyurethane foam dispensing systems — now augmented with real-time data acquisition, process analytics, and AI-assisted diagnostics to transform your production line into a smart manufacturing ecosystem.
-  </p>
+    <p class="hero-sub">
+      JINGZHENG Equipment USA brings Silicon Valley AI technology to polyurethane foam manufacturing. We turn your existing automation equipment into intelligent systems — raising yield rates, cutting labor costs, and giving your operators the data they need to do their best work.
+    </p>
 
-  <div class="hero-actions">
-    <a href="#contact" class="btn-primary">Request a Consultation</a>
-    <a href="#platform" class="btn-ghost">Explore Smart Platform →</a>
-  </div>
-
-  <div class="hero-stats">
-    <div class="stat">
-      <div class="stat-num">20+</div>
-      <div class="stat-label">Years in Foam Equipment</div>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">See What's Possible</a>
+      <a href="#platform" class="btn-ghost">Explore the Platform →</a>
     </div>
-    <div class="stat">
-      <div class="stat-num">3</div>
-      <div class="stat-label">Key Industries Served</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">Real-Time</div>
-      <div class="stat-label">Data Intelligence</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">24 / 7</div>
-      <div class="stat-label">Process Monitoring</div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">↑ Yield</div>
+        <div class="stat-label">Higher First-Pass Quality Rate</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">↓ Labor</div>
+        <div class="stat-label">Reduced Operator Dependency</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">24 / 7</div>
+        <div class="stat-label">AI Process Monitoring</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">Real-Time</div>
+        <div class="stat-label">Equipment Intelligence</div>
+      </div>
     </div>
   </div>
 </section>
@@ -596,138 +602,168 @@
 <section id="what">
   <div class="section-head fade-up">
     <div class="section-label">What We Do</div>
-    <h2 class="section-title">Hardware Precision Meets<br/>Software Intelligence</h2>
-    <p class="section-desc">We go beyond selling equipment. JINGZHENG USA combines world-class reaction molding hardware with a proprietary data platform that monitors, analyzes, and optimizes every shot on your line.</p>
+    <h2 class="section-title">From Automated to Intelligent —<br/>That's the JINGZHENG Difference</h2>
+    <p class="section-desc">Most foam equipment makers sell you a machine and walk away. We stay — layering Silicon Valley AI on top of your equipment so it continuously learns, self-diagnoses, and helps your team make better decisions every single shift.</p>
   </div>
 
   <div class="two-col">
     <div class="pillar-card blue fade-up">
       <div class="pillar-icon blue">⚙️</div>
       <h3>Reaction Molding Equipment</h3>
-      <p>High-precision polyurethane foam dispensing machines engineered for automotive seating, refrigerator cavities, and rigid insulation panel production. Repeatable shot accuracy, robust construction, and easy integration into existing carousel or linear lines.</p>
+      <p>High-precision polyurethane foam dispensing machines built for automotive seating, refrigerator cavities, and rigid insulation panels. Shot-weight repeatability, robust PLC control, and seamless integration into carousel or linear mold lines — the hardware foundation your process demands.</p>
       <div class="tag-list">
         <span class="tag blue">Multi-Component Mixing</span>
         <span class="tag blue">High-Pressure Dispensing</span>
         <span class="tag blue">Mold Carrier Lines</span>
         <span class="tag blue">PLC-Controlled</span>
+        <span class="tag blue">New Build or Retrofit</span>
       </div>
     </div>
 
     <div class="pillar-card purple fade-up">
       <div class="pillar-icon purple">🧠</div>
-      <h3>Smart Manufacturing Platform</h3>
-      <p>Our proprietary data acquisition layer sits on top of any foam machine — new or legacy — turning raw process signals into actionable insights. Track every parameter, predict failures before they happen, and benchmark quality shift over shift.</p>
+      <h3>AI Intelligence Layer</h3>
+      <p>Our Silicon Valley-developed AI platform sits on top of any foam machine — new or legacy — and transforms raw PLC signals into a living process brain. It spots quality drift before a bad part is made, guides operators with plain-language alerts, and builds a searchable memory of every shot ever produced.</p>
       <div class="tag-list">
-        <span class="tag purple">Real-Time OPC / PLC Data</span>
-        <span class="tag purple">AI Fault Diagnostics</span>
-        <span class="tag purple">Cloud Dashboard</span>
-        <span class="tag purple">Quality Traceability</span>
+        <span class="tag purple">Silicon Valley AI Engine</span>
+        <span class="tag purple">Real-Time PLC Data</span>
+        <span class="tag purple">Predictive Fault Detection</span>
+        <span class="tag purple">Operator Guidance System</span>
+        <span class="tag purple">Full Shot History</span>
       </div>
     </div>
   </div>
 </section>
 
-<div class="glow-divider"></div>
 
 <!-- INDUSTRIES -->
 <section id="industries">
   <div class="section-head fade-up">
     <div class="section-label">Industries Served</div>
-    <h2 class="section-title">Built for the Processes<br/>That Demand Precision</h2>
-    <p class="section-desc">Every foam application has unique chemistry, cycle times, and quality tolerances. Our systems are configured and tuned specifically for your industry.</p>
+    <h2 class="section-title">Deep Expertise in the Industries<br/>Where Foam Quality Is Non-Negotiable</h2>
+    <p class="section-desc">We don't sell a generic solution. Our equipment and AI platform are tuned to the specific chemistry, cycle demands, and quality standards of each industry we serve.</p>
   </div>
 
   <div class="industry-grid">
     <div class="industry-card fade-up">
       <div class="industry-icon">🚗</div>
       <h3>Automotive Seating</h3>
-      <p>From headrests to full seat cushions, our equipment handles flexible and semi-rigid formulations with the shot-weight consistency and cycle speed that automotive tier suppliers demand. Full traceability per VIN-compatible seat.</p>
+      <p>Tier suppliers can't afford rework or scrap at automotive volumes. Our AI monitors shot weight, cream time, and demold consistency on every cycle — catching drift before it becomes a defective seat. Full per-part traceability supports IATF 16949 audits without extra paperwork.</p>
     </div>
 
     <div class="industry-card fade-up">
       <div class="industry-icon">❄️</div>
       <h3>Refrigeration & Appliances</h3>
-      <p>Cavity fill for refrigerators, freezers, and water heaters requires void-free, dimensionally stable rigid foam. Our systems deliver precise mix ratios and injection pressure to meet insulation performance specs every cycle.</p>
+      <p>Void-free cavity fill is the difference between passing and failing energy efficiency ratings. Our systems hold mix ratios and injection pressure to tight tolerances every cycle, while our AI flags any deviation in real time — so you're not discovering problems at final inspection.</p>
     </div>
 
     <div class="industry-card fade-up">
       <div class="industry-icon">🏗️</div>
       <h3>Insulation Panels & Building Materials</h3>
-      <p>Continuous and batch panel lines for PIR / PUR rigid foam require consistent cream time and surface quality across high-volume runs. Our dispensing heads and data monitoring ensure board-to-board uniformity.</p>
+      <p>High-volume PIR/PUR panel lines live and die by consistency. Our dispensing systems and AI monitoring lock in cream time and surface quality board-to-board, shift-to-shift — giving you the process stability to confidently scale production.</p>
     </div>
   </div>
 </section>
 
-<div class="glow-divider"></div>
 
 <!-- SMART PLATFORM -->
 <section id="platform">
   <div class="section-head fade-up">
     <div class="section-label">Smart Platform</div>
-    <h2 class="section-title">From Machine Data<br/>to Manufacturing Intelligence</h2>
-    <p class="section-desc">Our IIoT platform connects directly to your foam machine's PLC, aggregates process parameters in real time, and surfaces insights through an intuitive web dashboard — no IT department required.</p>
+    <h2 class="section-title">Six Ways Our AI Turns Your<br/>Foam Line Into a Smart Factory</h2>
+    <p class="section-desc">Built in Austin with Silicon Valley AI technology, our platform connects to your foam machine's PLC in hours — not months. No IT department, no ripping out existing equipment. Just immediate, actionable intelligence.</p>
   </div>
 
   <div class="platform-grid">
     <div class="feature-card fade-up">
       <div class="feature-num">01</div>
       <div>
-        <h4>Real-Time Parameter Capture</h4>
-        <p>Temperature, pressure, flow rate, and shot weight are logged at millisecond resolution for every injection cycle. Full parameter history — searchable, exportable, and audit-ready.</p>
+        <h4>Process & Equipment Co-Optimization</h4>
+        <p>Our AI learns the relationship between your machine parameters and your foam quality outcomes — then recommends adjustments that make equipment and process work in tighter harmony. The result: higher yield with less trial and error.</p>
       </div>
     </div>
 
     <div class="feature-card fade-up">
       <div class="feature-num">02</div>
       <div>
-        <h4>AI-Assisted Fault Diagnostics</h4>
-        <p>Our rule engine cross-correlates pressure drop, flow deviation, and temperature variance to pinpoint root causes — valve wear, clogged filter, raw material inconsistency — before defects reach the end of the line.</p>
+        <h4>Predictive Fault Detection</h4>
+        <p>By cross-correlating temperature, pressure, and flow data across thousands of shots, our AI spots the early warning signs of valve wear, filter clogging, or raw material inconsistency — before a single defective part is made.</p>
       </div>
     </div>
 
     <div class="feature-card fade-up">
       <div class="feature-num">03</div>
       <div>
-        <h4>Process Quality Traceability</h4>
-        <p>Every shot is timestamped and linked to mold ID, operator, material lot, and machine state. One-click reports for customer audits, IATF 16949 compliance, or internal quality reviews.</p>
+        <h4>Operator Intelligence & Guidance</h4>
+        <p>Instead of staring at raw PLC numbers, operators see plain-language alerts and guided recommendations on a simple dashboard. Less expertise required to run the line well — which means lower labor costs and happier, more confident teams.</p>
       </div>
     </div>
 
     <div class="feature-card fade-up">
       <div class="feature-num">04</div>
       <div>
-        <h4>Cloud or On-Premise Deployment</h4>
-        <p>Deploy our platform on a local industrial PC for air-gapped environments, or connect to the cloud for multi-site visibility. Retrofit-compatible with existing machines — no hardware rip-and-replace needed.</p>
+        <h4>Full Shot-Level Traceability</h4>
+        <p>Every injection cycle is timestamped and linked to mold ID, operator, material lot, and machine state. One-click audit reports for IATF 16949, customer quality reviews, or internal investigations — no manual log-keeping required.</p>
       </div>
     </div>
 
     <div class="feature-card fade-up">
       <div class="feature-num">05</div>
       <div>
-        <h4>Shift & OEE Reporting</h4>
-        <p>Automated daily and weekly reports show production output, downtime breakdown, and quality yield by shift. Identify your top loss categories without combing through raw logs.</p>
+        <h4>Yield & OEE Analytics</h4>
+        <p>Automated shift and weekly reports surface your real yield rate, top defect causes, and production losses in plain terms. Stop guessing where quality problems come from — the data tells you exactly where to focus.</p>
       </div>
     </div>
 
     <div class="feature-card fade-up">
       <div class="feature-num">06</div>
       <div>
-        <h4>Remote Monitoring & Alerts</h4>
-        <p>Get notified the moment a parameter drifts outside spec — by email, SMS, or dashboard alert. Our team can also access machine telemetry remotely to support troubleshooting without a site visit.</p>
+        <h4>Remote Support & Cloud Access</h4>
+        <p>Our team monitors your machine telemetry remotely and can diagnose issues without a site visit. Deploy on a local industrial PC for air-gapped plants, or connect to the cloud for multi-site visibility — your choice.</p>
       </div>
     </div>
   </div>
 </section>
 
-<div class="glow-divider"></div>
+
+<!-- WHY JZ USA -->
+<section id="why" style="background: transparent;">
+  <div class="section-head fade-up" style="text-align:center; max-width:700px; margin:0 auto 60px;">
+    <div class="section-label">Why JINGZHENG USA</div>
+    <h2 class="section-title">Three Outcomes That Matter<br/>to Every Plant Manager</h2>
+    <p class="section-desc" style="max-width:100%;">We measure our success by three things your operation actually cares about — not uptime statistics or feature lists.</p>
+  </div>
+
+  <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:28px;">
+    <div class="pillar-card blue fade-up" style="text-align:center;">
+      <div style="font-size:48px; margin-bottom:16px;">📈</div>
+      <h3 style="margin-bottom:12px;">Higher Yield Rate</h3>
+      <p>Our AI catches process drift before it creates defects. Fewer bad parts, less rework, less scrap — your first-pass quality rate goes up and stays up.</p>
+    </div>
+
+    <div class="pillar-card purple fade-up" style="text-align:center;">
+      <div style="font-size:48px; margin-bottom:16px;">💡</div>
+      <h3 style="margin-bottom:12px;">Lower Labor Dependency</h3>
+      <p>When the machine tells operators exactly what to do and why, you need fewer experts on the floor. Reduce overtime, ease onboarding, and run more shifts with smaller, more efficient teams.</p>
+    </div>
+
+    <div class="pillar-card fade-up" style="text-align:center; border-color: rgba(52,211,153,0.2);">
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;border-radius:2px 2px 0 0;background:linear-gradient(90deg,#34d399,#059669);"></div>
+      <div style="font-size:48px; margin-bottom:16px;">😊</div>
+      <h3 style="margin-bottom:12px;">Happier Operators</h3>
+      <p>People do their best work when they understand what's happening around them. Our platform gives every operator on the floor clear, real-time visibility — turning stressful guesswork into confident, data-guided decisions.</p>
+    </div>
+  </div>
+</section>
+
 
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-wrap">
     <div class="contact-info fade-up">
       <div class="section-label">Contact</div>
-      <h2>Let's Talk About<br/>Your Process</h2>
-      <p>Whether you're evaluating new equipment, looking to retrofit your existing foam line with smart monitoring, or just want to understand what's possible — we're happy to start a conversation.</p>
+      <h2>Let's Talk About<br/>What's Holding Your Line Back</h2>
+      <p>Whether you're dealing with inconsistent yield, high rework costs, over-reliance on experienced operators, or just curious what AI-powered monitoring could do for your process — reach out. We'll show you exactly what's possible with your current equipment.</p>
 
       <div class="info-item">
         <div class="info-icon">📍</div>
@@ -806,73 +842,365 @@
 </footer>
 
 <script>
-/* ── PARTICLE CANVAS ── */
+/* ── AURORA WEBGL BACKGROUND ── */
 (function () {
   const canvas = document.getElementById('bg-canvas');
-  const ctx = canvas.getContext('2d');
-  let W, H, particles = [], animId;
+  const gl = canvas.getContext('webgl2', { alpha: true, premultipliedAlpha: true, antialias: true });
+  if (!gl) return;
 
-  const COLORS = ['rgba(29,140,248,', 'rgba(0,212,255,', 'rgba(167,139,250,'];
+  gl.clearColor(0, 0, 0, 0);
+  gl.enable(gl.BLEND);
+  gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+
+  const VERT = `#version 300 es
+in vec2 position;
+void main() {
+  gl_Position = vec4(position, 0.0, 1.0);
+}`;
+
+  const FRAG = `#version 300 es
+precision highp float;
+uniform float uTime;
+uniform float uAmplitude;
+uniform vec3 uColorStops[3];
+uniform vec2 uResolution;
+uniform float uBlend;
+out vec4 fragColor;
+
+vec3 permute(vec3 x) {
+  return mod(((x * 34.0) + 1.0) * x, 289.0);
+}
+float snoise(vec2 v) {
+  const vec4 C = vec4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439);
+  vec2 i  = floor(v + dot(v, C.yy));
+  vec2 x0 = v - i + dot(i, C.xx);
+  vec2 i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
+  vec4 x12 = x0.xyxy + C.xxzz;
+  x12.xy -= i1;
+  i = mod(i, 289.0);
+  vec3 p = permute(permute(i.y + vec3(0.0, i1.y, 1.0)) + i.x + vec3(0.0, i1.x, 1.0));
+  vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0);
+  m = m*m; m = m*m;
+  vec3 x = 2.0 * fract(p * C.www) - 1.0;
+  vec3 h = abs(x) - 0.5;
+  vec3 ox = floor(x + 0.5);
+  vec3 a0 = x - ox;
+  m *= 1.79284291400159 - 0.85373472095314 * (a0*a0 + h*h);
+  vec3 g;
+  g.x  = a0.x * x0.x  + h.x * x0.y;
+  g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+  return 130.0 * dot(m, g);
+}
+
+void main() {
+  vec2 uv = gl_FragCoord.xy / uResolution;
+
+  vec3 c0 = uColorStops[0];
+  vec3 c1 = uColorStops[1];
+  vec3 c2 = uColorStops[2];
+  vec3 rampColor;
+  if (uv.x < 0.5) {
+    rampColor = mix(c0, c1, uv.x * 2.0);
+  } else {
+    rampColor = mix(c1, c2, (uv.x - 0.5) * 2.0);
+  }
+
+  float height = snoise(vec2(uv.x * 2.0 + uTime * 0.1, uTime * 0.25)) * 0.5 * uAmplitude;
+  height = exp(height);
+  height = (uv.y * 2.0 - height + 0.2);
+  float intensity = 0.6 * height;
+
+  float midPoint = 0.20;
+  float blend = uBlend;
+  float auroraAlpha = smoothstep(midPoint - blend * 0.5, midPoint + blend * 0.5, intensity);
+
+  vec3 auroraColor = intensity * rampColor;
+  fragColor = vec4(auroraColor * auroraAlpha, auroraAlpha);
+}`;
+
+  function compileShader(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+
+  const prog = gl.createProgram();
+  gl.attachShader(prog, compileShader(gl.VERTEX_SHADER, VERT));
+  gl.attachShader(prog, compileShader(gl.FRAGMENT_SHADER, FRAG));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+
+  const verts = new Float32Array([-1,-1, 3,-1, -1,3]);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, verts, gl.STATIC_DRAW);
+  const loc = gl.getAttribLocation(prog, 'position');
+  gl.enableVertexAttribArray(loc);
+  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+
+  const uTime       = gl.getUniformLocation(prog, 'uTime');
+  const uAmplitude  = gl.getUniformLocation(prog, 'uAmplitude');
+  const uColorStops = gl.getUniformLocation(prog, 'uColorStops');
+  const uResolution = gl.getUniformLocation(prog, 'uResolution');
+  const uBlend      = gl.getUniformLocation(prog, 'uBlend');
+
+  function hexToRgb(hex) {
+    const r = parseInt(hex.slice(1,3),16)/255;
+    const g = parseInt(hex.slice(3,5),16)/255;
+    const b = parseInt(hex.slice(5,7),16)/255;
+    return [r, g, b];
+  }
+
+  const colors = ['#1d8cf8','#00d4ff','#7c3aed'];
+  const colorArr = colors.flatMap(hexToRgb);
 
   function resize() {
-    W = canvas.width = window.innerWidth;
-    H = canvas.height = window.innerHeight;
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    gl.uniform2f(uResolution, canvas.width, canvas.height);
   }
+  window.addEventListener('resize', resize);
+  resize();
 
-  function rand(min, max) { return Math.random() * (max - min) + min; }
+  gl.uniform3fv(uColorStops, colorArr);
+  gl.uniform1f(uAmplitude, 2.2);
+  gl.uniform1f(uBlend, 1.2);
 
-  function createParticle() {
-    return {
-      x: rand(0, W), y: rand(0, H),
-      r: rand(1, 2.5),
-      vx: rand(-0.18, 0.18), vy: rand(-0.18, 0.18),
-      alpha: rand(0.15, 0.55),
-      color: COLORS[Math.floor(Math.random() * COLORS.length)]
-    };
+  let t = 0;
+  function tick(ms) {
+    t = ms * 0.001;
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.uniform1f(uTime, t * 1.4);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+    requestAnimationFrame(tick);
   }
+  requestAnimationFrame(tick);
+})();
 
-  function init() {
-    particles = [];
-    const count = Math.min(Math.floor(W * H / 8000), 140);
-    for (let i = 0; i < count; i++) particles.push(createParticle());
-  }
+/* ── GALAXY WEBGL (Hero star overlay) ── */
+(function () {
+  const canvas = document.getElementById('galaxy-canvas');
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
 
-  function drawLines() {
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 130) {
-          const a = (1 - dist / 130) * 0.12;
-          ctx.strokeStyle = `rgba(29,140,248,${a})`;
-          ctx.lineWidth = 0.7;
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.stroke();
-        }
-      }
+  gl.enable(gl.BLEND);
+  gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+  gl.clearColor(0, 0, 0, 0);
+
+  const VERT = `
+attribute vec2 uv;
+attribute vec2 position;
+varying vec2 vUv;
+void main() { vUv = uv; gl_Position = vec4(position, 0.0, 1.0); }`;
+
+  const FRAG = `
+precision highp float;
+uniform float uTime;
+uniform vec3 uResolution;
+uniform vec2 uFocal;
+uniform vec2 uRotation;
+uniform float uStarSpeed;
+uniform float uDensity;
+uniform float uHueShift;
+uniform float uSpeed;
+uniform vec2 uMouse;
+uniform float uGlowIntensity;
+uniform float uSaturation;
+uniform bool uMouseRepulsion;
+uniform float uTwinkleIntensity;
+uniform float uRotationSpeed;
+uniform float uRepulsionStrength;
+uniform float uMouseActiveFactor;
+uniform float uAutoCenterRepulsion;
+varying vec2 vUv;
+
+#define NUM_LAYER 4.0
+#define STAR_COLOR_CUTOFF 0.2
+#define MAT45 mat2(0.7071,-0.7071,0.7071,0.7071)
+#define PERIOD 3.0
+
+float Hash21(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}
+float tri(float x){return abs(fract(x)*2.0-1.0);}
+float tris(float x){float t=fract(x);return 1.0-smoothstep(0.0,1.0,abs(2.0*t-1.0));}
+float trisn(float x){float t=fract(x);return 2.0*(1.0-smoothstep(0.0,1.0,abs(2.0*t-1.0)))-1.0;}
+
+vec3 hsv2rgb(vec3 c){
+  vec4 K=vec4(1.0,2.0/3.0,1.0/3.0,3.0);
+  vec3 p=abs(fract(c.xxx+K.xyz)*6.0-K.www);
+  return c.z*mix(K.xxx,clamp(p-K.xxx,0.0,1.0),c.y);
+}
+
+float Star(vec2 uv,float flare){
+  float d=length(uv);
+  float m=(0.05*uGlowIntensity)/d;
+  float rays=smoothstep(0.0,1.0,1.0-abs(uv.x*uv.y*1000.0));
+  m+=rays*flare*uGlowIntensity;
+  uv*=MAT45;
+  rays=smoothstep(0.0,1.0,1.0-abs(uv.x*uv.y*1000.0));
+  m+=rays*0.3*flare*uGlowIntensity;
+  m*=smoothstep(1.0,0.2,d);
+  return m;
+}
+
+vec3 StarLayer(vec2 uv){
+  vec3 col=vec3(0.0);
+  vec2 gv=fract(uv)-0.5;
+  vec2 id=floor(uv);
+  for(int y=-1;y<=1;y++){
+    for(int x=-1;x<=1;x++){
+      vec2 offset=vec2(float(x),float(y));
+      vec2 si=id+vec2(float(x),float(y));
+      float seed=Hash21(si);
+      float size=fract(seed*345.32);
+      float glossLocal=tri(uStarSpeed/(PERIOD*seed+1.0));
+      float flareSize=smoothstep(0.9,1.0,size)*glossLocal;
+      float red=smoothstep(STAR_COLOR_CUTOFF,1.0,Hash21(si+1.0))+STAR_COLOR_CUTOFF;
+      float blu=smoothstep(STAR_COLOR_CUTOFF,1.0,Hash21(si+3.0))+STAR_COLOR_CUTOFF;
+      float grn=min(red,blu)*seed;
+      vec3 base=vec3(red,grn,blu);
+      float hue=atan(base.g-base.r,base.b-base.r)/(2.0*3.14159)+0.5;
+      hue=fract(hue+uHueShift/360.0);
+      float sat=length(base-vec3(dot(base,vec3(0.299,0.587,0.114))))*uSaturation;
+      float val=max(max(base.r,base.g),base.b);
+      base=hsv2rgb(vec3(hue,sat,val));
+      vec2 pad=vec2(tris(seed*34.0+uTime*uSpeed/10.0),tris(seed*38.0+uTime*uSpeed/30.0))-0.5;
+      float star=Star(gv-offset-pad,flareSize);
+      float twinkle=trisn(uTime*uSpeed+seed*6.2831)*0.5+1.0;
+      twinkle=mix(1.0,twinkle,uTwinkleIntensity);
+      star*=twinkle;
+      col+=star*size*base;
     }
   }
+  return col;
+}
 
-  function tick() {
-    ctx.clearRect(0, 0, W, H);
-    drawLines();
-    particles.forEach(p => {
-      p.x += p.vx; p.y += p.vy;
-      if (p.x < 0 || p.x > W) p.vx *= -1;
-      if (p.y < 0 || p.y > H) p.vy *= -1;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = p.color + p.alpha + ')';
-      ctx.fill();
-    });
-    animId = requestAnimationFrame(tick);
+void main(){
+  vec2 focalPx=uFocal*uResolution.xy;
+  vec2 uv=(vUv*uResolution.xy-focalPx)/uResolution.y;
+  if(uMouseRepulsion){
+    vec2 mousePosUV=(uMouse*uResolution.xy-focalPx)/uResolution.y;
+    float mouseDist=length(uv-mousePosUV);
+    vec2 repulsion=normalize(uv-mousePosUV)*(uRepulsionStrength/(mouseDist+0.1));
+    uv+=repulsion*0.05*uMouseActiveFactor;
   }
+  float autoRotAngle=uTime*uRotationSpeed;
+  mat2 autoRot=mat2(cos(autoRotAngle),-sin(autoRotAngle),sin(autoRotAngle),cos(autoRotAngle));
+  uv=autoRot*uv;
+  uv=mat2(uRotation.x,-uRotation.y,uRotation.y,uRotation.x)*uv;
+  vec3 col=vec3(0.0);
+  for(float i=0.0;i<1.0;i+=1.0/NUM_LAYER){
+    float depth=fract(i+uStarSpeed*uSpeed);
+    float scale=mix(20.0*uDensity,0.5*uDensity,depth);
+    float fade=depth*smoothstep(1.0,0.9,depth);
+    col+=StarLayer(uv*scale+i*453.32)*fade;
+  }
+  float alpha=length(col);
+  alpha=smoothstep(0.0,0.3,alpha);
+  alpha=min(alpha,1.0);
+  gl_FragColor=vec4(col,alpha);
+}`;
 
-  window.addEventListener('resize', () => { resize(); init(); });
-  resize(); init(); tick();
+  function mkShader(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src); gl.compileShader(s); return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, mkShader(gl.VERTEX_SHADER, VERT));
+  gl.attachShader(prog, mkShader(gl.FRAGMENT_SHADER, FRAG));
+  gl.linkProgram(prog); gl.useProgram(prog);
+
+  // Geometry: full-screen triangle with positions + uvs
+  const posBuf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, posBuf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
+  const posLoc = gl.getAttribLocation(prog, 'position');
+  gl.enableVertexAttribArray(posLoc);
+  gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
+
+  const uvBuf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, uvBuf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([0,0, 2,0, 0,2]), gl.STATIC_DRAW);
+  const uvLoc = gl.getAttribLocation(prog, 'uv');
+  gl.enableVertexAttribArray(uvLoc);
+  gl.vertexAttribPointer(uvLoc, 2, gl.FLOAT, false, 0, 0);
+
+  // Uniforms
+  const uTime      = gl.getUniformLocation(prog,'uTime');
+  const uRes       = gl.getUniformLocation(prog,'uResolution');
+  const uFocal     = gl.getUniformLocation(prog,'uFocal');
+  const uRotation  = gl.getUniformLocation(prog,'uRotation');
+  const uStarSpeed = gl.getUniformLocation(prog,'uStarSpeed');
+  const uDensity   = gl.getUniformLocation(prog,'uDensity');
+  const uHueShift  = gl.getUniformLocation(prog,'uHueShift');
+  const uSpeed     = gl.getUniformLocation(prog,'uSpeed');
+  const uMouse     = gl.getUniformLocation(prog,'uMouse');
+  const uGlow      = gl.getUniformLocation(prog,'uGlowIntensity');
+  const uSat       = gl.getUniformLocation(prog,'uSaturation');
+  const uRepulsion = gl.getUniformLocation(prog,'uMouseRepulsion');
+  const uTwinkle   = gl.getUniformLocation(prog,'uTwinkleIntensity');
+  const uRotSpd    = gl.getUniformLocation(prog,'uRotationSpeed');
+  const uRepStr    = gl.getUniformLocation(prog,'uRepulsionStrength');
+  const uMouseFact = gl.getUniformLocation(prog,'uMouseActiveFactor');
+  const uAutoRep   = gl.getUniformLocation(prog,'uAutoCenterRepulsion');
+
+  gl.uniform2f(uFocal, 0.5, 0.5);
+  gl.uniform2f(uRotation, 1.0, 0.0);
+  gl.uniform1f(uDensity, 1.2);
+  gl.uniform1f(uHueShift, 210.0);
+  gl.uniform1f(uSpeed, 1.0);
+  gl.uniform1f(uGlow, 0.45);
+  gl.uniform1f(uSat, 0.8);
+  gl.uniform1i(uRepulsion, 1);
+  gl.uniform1f(uTwinkle, 0.5);
+  gl.uniform1f(uRotSpd, 0.04);
+  gl.uniform1f(uRepStr, 2.5);
+  gl.uniform1f(uAutoRep, 0.0);
+  gl.uniform2f(uMouse, 0.5, 0.5);
+  gl.uniform1f(uMouseFact, 0.0);
+
+  function resize() {
+    const hero = document.getElementById('hero');
+    const w = hero.offsetWidth, h = hero.offsetHeight;
+    canvas.width = w; canvas.height = h;
+    gl.viewport(0, 0, w, h);
+    gl.uniform3f(uRes, w, h, w / h);
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  // Smooth mouse tracking
+  let tMouseX = 0.5, tMouseY = 0.5, sMouseX = 0.5, sMouseY = 0.5;
+  let tActive = 0, sActive = 0;
+
+  document.getElementById('hero').addEventListener('mousemove', e => {
+    const rect = canvas.getBoundingClientRect();
+    tMouseX = (e.clientX - rect.left) / rect.width;
+    tMouseY = 1.0 - (e.clientY - rect.top) / rect.height;
+    tActive = 1.0;
+  });
+  document.getElementById('hero').addEventListener('mouseleave', () => { tActive = 0.0; });
+
+  const t0 = performance.now();
+  let starSpeedVal = 0;
+
+  (function tick(ms) {
+    const t = (ms - t0) / 1000;
+    starSpeedVal = t * 0.5 * 0.1;
+
+    sMouseX += (tMouseX - sMouseX) * 0.05;
+    sMouseY += (tMouseY - sMouseY) * 0.05;
+    sActive += (tActive - sActive) * 0.05;
+
+    gl.uniform1f(uTime, t);
+    gl.uniform1f(uStarSpeed, starSpeedVal);
+    gl.uniform2f(uMouse, sMouseX, sMouseY);
+    gl.uniform1f(uMouseFact, sActive);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+    requestAnimationFrame(tick);
+  })(performance.now());
 })();
 
 /* ── SCROLL FADE-IN ── */
