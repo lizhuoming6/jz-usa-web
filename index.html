@@ -405,6 +405,23 @@
     }
     .demo-showcase img { width: 100%; display: block; }
 
+    /* ── VIDEO EMBED ── */
+    .video-wrap {
+      margin-bottom: 52px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 48px rgba(0,0,0,0.08);
+      aspect-ratio: 16 / 9;
+      background: #000;
+    }
+    .video-wrap iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: none;
+    }
+
     /* ── PLATFORM GRID ── */
     .platform-grid {
       display: grid;
@@ -691,6 +708,20 @@
       <div class="demo-url">app.jz-usa.com · JingZheng Analytics · Live Demo</div>
     </div>
     <img src="JingZheng_Demo.gif" alt="JingZheng Analytics Platform — Real-Time Foam Process Intelligence" loading="lazy" />
+  </div>
+
+  <!-- VIDEO: Equipment in action -->
+  <div style="margin-bottom: 16px;">
+    <p style="font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px;">See It In Action</p>
+    <p style="font-size: 1rem; color: var(--text-muted); margin-bottom: 24px;">Real equipment. Real production lines. Running at customer facilities.</p>
+  </div>
+  <div class="video-wrap fade-up">
+    <iframe
+      src="https://www.youtube.com/embed/PSfK4_iqKyQ?start=69&rel=0&modestbranding=1"
+      title="Polyurethane Foam Production Line in Operation — JINGZHENG Equipment"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
   </div>
 
   <div class="platform-grid">
