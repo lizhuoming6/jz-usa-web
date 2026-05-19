@@ -520,73 +520,32 @@
     .why-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.75; }
 
     /* ── CONTACT ── */
-    .contact-wrap {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: start;
+    #contact { text-align: center; }
+    #contact .section-head { margin-left: auto; margin-right: auto; max-width: 600px; }
+    #contact .section-desc { max-width: 100%; }
+
+    .contact-cards {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 8px;
     }
 
-    .contact-info h2 {
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      font-weight: 800;
-      letter-spacing: -0.025em;
-      margin-bottom: 16px;
-    }
-    .contact-info p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 40px; }
-
-    .info-item { margin-bottom: 24px; }
-    .info-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 5px; font-weight: 500; }
-    .info-val { font-size: 0.93rem; color: var(--text); line-height: 1.6; }
-    .info-val a { color: var(--accent); text-decoration: none; }
-    .info-val a:hover { text-decoration: underline; }
-
-    .contact-form {
+    .contact-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 40px;
+      padding: 32px 40px;
+      min-width: 220px;
+      transition: border-color 0.25s;
     }
-    .contact-form h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 28px;
-      letter-spacing: -0.01em;
-    }
+    .contact-card:hover { border-color: var(--border-hover); }
 
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .form-group { margin-bottom: 14px; }
-    .form-group label {
-      display: block;
-      font-size: 11.5px;
-      font-weight: 500;
-      color: var(--text-muted);
-      margin-bottom: 7px;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 7px;
-      padding: 10px 13px;
-      color: var(--text);
-      font-size: 14px;
-      font-family: 'Inter', sans-serif;
-      outline: none;
-      transition: border-color 0.2s;
-      resize: none;
-    }
-    .form-group input::placeholder,
-    .form-group textarea::placeholder { color: var(--text-muted); opacity: 0.55; }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus { border-color: var(--accent); }
-    .form-group select option { background: #18181f; color: var(--text); }
-    .form-group textarea { min-height: 100px; }
+    .info-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; font-weight: 500; }
+    .info-val { font-size: 1rem; color: var(--text); line-height: 1.6; }
+    .info-val a { color: var(--accent); text-decoration: none; }
+    .info-val a:hover { text-decoration: underline; }
 
     .form-submit {
       width: 100%;
@@ -639,8 +598,8 @@
       .industry-grid { grid-template-columns: 1fr 1fr; }
       .platform-grid { grid-template-columns: 1fr; }
       .why-grid { grid-template-columns: 1fr 1fr; }
-      .contact-wrap { grid-template-columns: 1fr; gap: 48px; }
-      .form-row { grid-template-columns: 1fr; }
+      .contact-cards { flex-direction: column; align-items: center; }
+      .contact-card { width: 100%; max-width: 480px; }
       .nav-links { display: none; }
       .hero-stats { flex-wrap: wrap; border-radius: var(--radius); }
       .stat { padding: 16px 24px; }
@@ -901,65 +860,26 @@
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="contact-wrap">
-    <div class="contact-info fade-up">
-      <div class="section-label">Contact</div>
-      <h2>Ready to Make<br/>Your Line Smarter?</h2>
-      <p>Whether you run automotive seat foam, refrigerator cavities, or insulation panels — tell us about your process. We will show you exactly what is possible with your current equipment. No obligation, no jargon.</p>
+  <div class="section-head fade-up">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">Ready to Make<br/>Your Line Smarter?</h2>
+    <p class="section-desc">Whether you run automotive seat foam, refrigerator cavities, or insulation panels — tell us about your process. No obligation, no jargon.</p>
+  </div>
 
-      <div class="info-item">
-        <div class="info-label">Address</div>
-        <div class="info-val">5900 Balcones Drive STE 100<br/>Austin, TX 78731<br/>Travis County, USA</div>
-      </div>
-
-      <div class="info-item">
-        <div class="info-label">Phone</div>
-        <div class="info-val"><a href="tel:+15188892008">(518) 889-2008</a></div>
-      </div>
-
-      <div class="info-item">
-        <div class="info-label">Email</div>
-        <div class="info-val"><a href="mailto:joe@jz-usa.com">joe@jz-usa.com</a></div>
-      </div>
+  <div class="contact-cards">
+    <div class="contact-card fade-up">
+      <div class="info-label">Address</div>
+      <div class="info-val">5900 Balcones Drive STE 100<br/>Austin, TX 78731<br/>Travis County, USA</div>
     </div>
 
-    <div class="contact-form fade-up">
-      <h3>Send Us a Message</h3>
-      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-        <div class="form-row">
-          <div class="form-group">
-            <label>First Name</label>
-            <input type="text" name="first_name" placeholder="John" required />
-          </div>
-          <div class="form-group">
-            <label>Last Name</label>
-            <input type="text" name="last_name" placeholder="Smith" required />
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Company</label>
-          <input type="text" name="company" placeholder="Your Company Name" />
-        </div>
-        <div class="form-group">
-          <label>Email</label>
-          <input type="email" name="email" placeholder="you@company.com" required />
-        </div>
-        <div class="form-group">
-          <label>Industry</label>
-          <select name="industry">
-            <option value="">Select your industry</option>
-            <option value="automotive">Automotive Seating</option>
-            <option value="refrigeration">Refrigeration / Appliances</option>
-            <option value="insulation">Insulation Panels / Building Materials</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Message</label>
-          <textarea name="message" placeholder="Tell us about your process or what you're looking for…"></textarea>
-        </div>
-        <button type="submit" class="form-submit">Send Message →</button>
-      </form>
+    <div class="contact-card fade-up">
+      <div class="info-label">Phone</div>
+      <div class="info-val"><a href="tel:+15188892008">(518) 889-2008</a></div>
+    </div>
+
+    <div class="contact-card fade-up">
+      <div class="info-label">Email</div>
+      <div class="info-val"><a href="mailto:joe@jz-usa.com">joe@jz-usa.com</a></div>
     </div>
   </div>
 </section>
@@ -1129,14 +1049,6 @@ void main() {
   els.forEach(el => obs.observe(el));
 })();
 
-/* ── FORM SUBMIT (Formspree fallback) ── */
-document.querySelector('form').addEventListener('submit', function(e) {
-  const action = this.getAttribute('action');
-  if (action.includes('YOUR_FORM_ID')) {
-    e.preventDefault();
-    alert('To enable the contact form, sign up at formspree.io and replace YOUR_FORM_ID in the HTML.\n\nFor now, please email joe@jz-usa.com directly.');
-  }
-});
 </script>
 </body>
 </html>
