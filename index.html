@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JINGZHENG Equipment USA — AI-Powered Foam Manufacturing Intelligence</title>
-<meta name="description" content="30 years of polyurethane foam equipment engineering, now with AI. Real-time monitoring, SPC, auto-diagnosis for your foam line.">
+<meta name="description" content="30 years of polyurethane foam equipment engineering, now with AI. Real-time monitoring, auto-diagnosis for your foam line.">
 <link rel="stylesheet" href="style.css">
 <style>
 #hero {
@@ -17,33 +17,20 @@
   overflow: hidden;
   text-align: center;
   padding: 0;
-}
-.hero-video {
-  position: absolute;
-  inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  opacity: 0.40;
-  z-index: 0;
+  background: var(--bg);
 }
 .hero-grid {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 0;
   background-image:
-    linear-gradient(rgba(42,91,212,0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(42,91,212,0.07) 1px, transparent 1px);
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
   background-size: 60px 60px;
-}
-.hero-grid::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 70% 60% at 50% 50%, transparent 30%, var(--bg) 100%);
 }
 .hero-content {
   position: relative;
-  z-index: 2;
+  z-index: 1;
   max-width: 720px;
   padding: 0 24px;
 }
@@ -101,7 +88,7 @@
   bottom: 32px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 2;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -140,20 +127,17 @@
 </nav>
 
 <section id="hero">
-  <video class="hero-video" autoplay muted loop playsinline>
-    <source src="hero-bg.mp4" type="video/mp4">
-  </video>
   <div class="hero-grid"></div>
   <div class="hero-content">
     <div class="hero-badge">
       <span class="hero-badge-dot"></span>
-      30 Years of Manufacturing · Silicon Valley AI · Austin, TX
+      30 Years of Manufacturing · AI-Powered · Austin, TX
     </div>
     <h1 class="hero-title">
       Your Foam Line,<br><span class="accent">Made Intelligent</span>
     </h1>
     <p class="hero-sub">
-      Real-time monitoring, SPC analytics, and AI-powered diagnostics — built specifically for polyurethane foam equipment.
+      We put AI on your foam machine — so it can watch itself, catch problems early, and help your team make better decisions every shift.
     </p>
     <div class="hero-btns">
       <a href="about.html#contact" class="btn btn-primary">Talk to Our Team</a>
@@ -169,7 +153,6 @@
 <footer>
   <div class="footer-inner">
     <span>© 2025 JINGZHENG Equipment USA LLC · Austin, TX</span>
-    <span>Parent company: <a href="https://www.jzsb.com" target="_blank">Hunan Jingzheng Equipment Co.</a></span>
   </div>
 </footer>
 
