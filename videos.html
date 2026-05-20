@@ -271,16 +271,9 @@
     <div class="region-block fade-up">
       <div class="region-title">North America</div>
       <div class="video-grid">
-        <div class="video-card">
-          <iframe src="https://www.youtube.com/embed/PSfK4_iqKyQ?start=69&rel=0&modestbranding=1"
-            title="JINGZHENG Equipment – North America"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen loading="lazy"></iframe>
-          <div class="video-card-info">
-            <div class="video-card-flag">🇺🇸</div>
-            <div class="video-card-title">High-Pressure Foam Machine · USA</div>
-            <div class="video-card-desc">Jingzheng equipment in operation — automotive seat foam production line.</div>
-          </div>
+        <div class="coming-soon">
+          <strong>🇺🇸 USA</strong>
+          Video coming soon
         </div>
         <div class="coming-soon">
           <strong>🇲🇽 Mexico</strong>
@@ -314,9 +307,16 @@
           <strong>🇻🇳 Vietnam</strong>
           Video coming soon
         </div>
-        <div class="coming-soon">
-          <strong>🇮🇩 Indonesia</strong>
-          Video coming soon
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/PSfK4_iqKyQ?start=69&rel=0&modestbranding=1"
+            title="JINGZHENG Equipment – Indonesia"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>
+          <div class="video-card-info">
+            <div class="video-card-flag">🇮🇩</div>
+            <div class="video-card-title">High-Pressure Foam Machine · Indonesia</div>
+            <div class="video-card-desc">Jingzheng equipment in operation on an Indonesian production line.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -356,13 +356,13 @@
 <script>
 // Countries with equipment installed
 const locations = [
-  { name: 'USA',        coords: [-98,  38],  hasVideo: true,  videoId: 'PSfK4_iqKyQ', videoStart: 69, label: 'Automotive foam line' },
+  { name: 'USA',        coords: [-98,  38],  hasVideo: false, label: 'Automotive foam line' },
   { name: 'Mexico',     coords: [-102, 23],  hasVideo: false, label: 'Furniture & automotive' },
   { name: 'Korea',      coords: [128,  37],  hasVideo: false, label: 'Automotive seat plant' },
   { name: 'China',      coords: [104,  35],  hasVideo: false, label: 'Multiple installations' },
   { name: 'Thailand',   coords: [101,  15],  hasVideo: false, label: 'Automotive supplier' },
   { name: 'Vietnam',    coords: [106,  16],  hasVideo: false, label: 'Furniture manufacturer' },
-  { name: 'Indonesia',  coords: [118,  -2],  hasVideo: false, label: 'Foam production' },
+  { name: 'Indonesia',  coords: [118,  -2],  hasVideo: true,  videoId: 'PSfK4_iqKyQ', videoStart: 69, label: 'Foam production line' },
   { name: 'Malaysia',   coords: [110,   4],  hasVideo: false, label: 'Furniture & bedding' },
   { name: 'India',      coords: [78,   22],  hasVideo: false, label: 'Automotive supplier' },
   { name: 'UAE',        coords: [54,   24],  hasVideo: false, label: 'Furniture & mattress' },
