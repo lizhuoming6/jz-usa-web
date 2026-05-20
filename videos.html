@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Reach — JINGZHENG Equipment USA</title>
+<link rel="stylesheet" href="style.css">
+<!-- D3 + TopoJSON -->
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+<style>
+.page-hero {
+  padding: 140px 0 80px;
+  text-align: center;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+/* map container */
+#map-section {
+  padding: 64px 0 0;
+  background: #0d1520;
+}
+#map-section .map-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 0 40px;
+}
+#map-section .map-header .section-label { color: rgba(255,255,255,0.5); }
+#map-section .map-header .section-title { color: #fff; }
+#map-section .map-header .section-sub { color: rgba(255,255,255,0.5); margin: 0 auto; }
+
+#world-map {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: block;
+  cursor: default;
+}
+#world-map path.country {
+  fill: #1a2840;
+  stroke: #253650;
+  stroke-width: 0.5;
+  transition: fill .2s;
+}
+#world-map path.country.has-equipment {
+  fill: #1e3560;
+}
+#world-map path.country.has-equipment:hover {
+  fill: #274a8a;
+}
+/* dots */
+.map-dot {
+  cursor: pointer;
+  transition: r .2s;
+}
+.map-dot circle.outer {
+  fill: none;
+  stroke: rgba(42,91,212,0.4);
+  stroke-width: 1;
+  animation: ripple 2.5s infinite;
+}
+.map-dot circle.inner {
+  fill: #2a5bd4;
+}
+.map-dot.has-video circle.inner { fill: #4ade80; }
+.map-dot.has-video circle.outer { stroke: rgba(74,222,128,0.4); }
+.map-dot:hover circle.inner { r: 7; }
+
+@keyframes ripple {
+  0% { r: 8; opacity: .8; }
+  100% { r: 18; opacity: 0; }
+}
+
+/* map legend */
+.map-legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 24px 40px 40px;
+  flex-wrap: wrap;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+}
+.legend-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+}
+.legend-dot.equipment { background: #2a5bd4; }
+.legend-dot.video { background: #4ade80; }
+
+/* tooltip */
+#map-tooltip {
+  position: fixed;
+  background: rgba(13,21,32,0.95);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: #fff;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0;
+  transition: opacity .15s;
+  max-width: 220px;
+}
+#map-tooltip .tt-country { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+#map-tooltip .tt-info { color: rgba(255,255,255,0.6); font-size: 12px; }
+#map-tooltip .tt-video { color: #4ade80; font-size: 12px; margin-top: 4px; font-weight: 600; }
+
+/* video list section */
+#video-list {
+  padding: 96px 0;
+}
+.region-block { margin-bottom: 64px; }
+.region-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
+  margin-bottom: 28px;
+}
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.video-card {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: box-shadow .2s;
+}
+.video-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.1); }
+.video-card iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
+  display: block;
+  border: none;
+}
+.video-card-info {
+  padding: 16px 18px;
+}
+.video-card-flag { font-size: 20px; margin-bottom: 4px; }
+.video-card-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.video-card-desc { font-size: 13px; color: var(--text-muted); }
+
+/* coming soon placeholder */
+.coming-soon {
+  border: 1.5px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 40px 24px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+.coming-soon strong { display: block; margin-bottom: 4px; font-size: 16px; color: var(--text); }
+
+/* modal */
+#video-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+#video-modal.open { display: flex; }
+.modal-inner {
+  background: #111;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 800px;
+  position: relative;
+}
+.modal-inner iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
+  display: block;
+  border: none;
+}
+.modal-close {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 28px;
+  cursor: pointer;
+  line-height: 1;
+  opacity: .8;
+}
+.modal-close:hover { opacity: 1; }
+
+@media (max-width: 960px) {
+  .video-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .video-grid { grid-template-columns: 1fr; }
+  .map-legend { gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-box">JZ</div>
+      <span>JINGZHENG Equipment<small>USA LLC</small></span>
+    </a>
+    <button class="nav-hamburger" onclick="this.nextElementSibling.classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="platform.html">Platform</a></li>
+      <li><a href="videos.html" class="active">Global Reach</a></li>
+      <li><a href="about.html#contact" class="btn-nav">Contact Us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <p class="section-label">Global Reach</p>
+    <h1 class="section-title">Equipment Running<br>Across 5 Continents</h1>
+    <p class="section-sub" style="margin: 0 auto;">Jingzheng foam equipment is operating in 20+ countries. Click any dot to see it in action.</p>
+  </div>
+</div>
+
+<!-- World Map -->
+<div id="map-section">
+  <div class="map-header">
+    <p class="section-label">Live Installations</p>
+    <h2 class="section-title" style="font-size: clamp(24px,3vw,36px);">Where our machines run</h2>
+    <p class="section-sub">Green dots have video. Blue dots are active installations.</p>
+  </div>
+  <svg id="world-map"></svg>
+  <div class="map-legend">
+    <div class="legend-item"><div class="legend-dot equipment"></div> Equipment installed</div>
+    <div class="legend-item"><div class="legend-dot video"></div> Video available — click to watch</div>
+  </div>
+</div>
+
+<div id="map-tooltip">
+  <div class="tt-country"></div>
+  <div class="tt-info"></div>
+  <div class="tt-video"></div>
+</div>
+
+<!-- Video List -->
+<section id="video-list">
+  <div class="container">
+
+    <div class="region-block fade-up">
+      <div class="region-title">North America</div>
+      <div class="video-grid">
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/PSfK4_iqKyQ?start=69&rel=0&modestbranding=1"
+            title="JINGZHENG Equipment – North America"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>
+          <div class="video-card-info">
+            <div class="video-card-flag">🇺🇸</div>
+            <div class="video-card-title">High-Pressure Foam Machine · USA</div>
+            <div class="video-card-desc">Jingzheng equipment in operation — automotive seat foam production line.</div>
+          </div>
+        </div>
+        <div class="coming-soon">
+          <strong>🇲🇽 Mexico</strong>
+          Video coming soon
+        </div>
+      </div>
+    </div>
+
+    <div class="region-block fade-up">
+      <div class="region-title">East Asia</div>
+      <div class="video-grid">
+        <div class="coming-soon">
+          <strong>🇰🇷 Korea</strong>
+          Video coming soon
+        </div>
+        <div class="coming-soon">
+          <strong>🇨🇳 China</strong>
+          Video coming soon
+        </div>
+      </div>
+    </div>
+
+    <div class="region-block fade-up">
+      <div class="region-title">Southeast Asia</div>
+      <div class="video-grid">
+        <div class="coming-soon">
+          <strong>🇹🇭 Thailand</strong>
+          Video coming soon
+        </div>
+        <div class="coming-soon">
+          <strong>🇻🇳 Vietnam</strong>
+          Video coming soon
+        </div>
+        <div class="coming-soon">
+          <strong>🇮🇩 Indonesia</strong>
+          Video coming soon
+        </div>
+      </div>
+    </div>
+
+    <div class="region-block fade-up">
+      <div class="region-title">South Asia & Middle East</div>
+      <div class="video-grid">
+        <div class="coming-soon">
+          <strong>🇮🇳 India</strong>
+          Video coming soon
+        </div>
+        <div class="coming-soon">
+          <strong>🇦🇪 UAE</strong>
+          Video coming soon
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Modal -->
+<div id="video-modal">
+  <div class="modal-inner">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <iframe id="modal-iframe" src="" title="Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2025 JINGZHENG Equipment USA LLC · Austin, TX</span>
+    <span>Parent company: <a href="https://www.jzsb.com" target="_blank">Hunan Jingzheng Equipment Co.</a></span>
+  </div>
+</footer>
+
+<script>
+// Countries with equipment installed
+const locations = [
+  { name: 'USA',        coords: [-98,  38],  hasVideo: true,  videoId: 'PSfK4_iqKyQ', videoStart: 69, label: 'Automotive foam line' },
+  { name: 'Mexico',     coords: [-102, 23],  hasVideo: false, label: 'Furniture & automotive' },
+  { name: 'Korea',      coords: [128,  37],  hasVideo: false, label: 'Automotive seat plant' },
+  { name: 'China',      coords: [104,  35],  hasVideo: false, label: 'Multiple installations' },
+  { name: 'Thailand',   coords: [101,  15],  hasVideo: false, label: 'Automotive supplier' },
+  { name: 'Vietnam',    coords: [106,  16],  hasVideo: false, label: 'Furniture manufacturer' },
+  { name: 'Indonesia',  coords: [118,  -2],  hasVideo: false, label: 'Foam production' },
+  { name: 'Malaysia',   coords: [110,   4],  hasVideo: false, label: 'Furniture & bedding' },
+  { name: 'India',      coords: [78,   22],  hasVideo: false, label: 'Automotive supplier' },
+  { name: 'UAE',        coords: [54,   24],  hasVideo: false, label: 'Furniture & mattress' },
+  { name: 'Egypt',      coords: [30,   27],  hasVideo: false, label: 'Foam products' },
+  { name: 'Brazil',     coords: [-52, -14],  hasVideo: false, label: 'Furniture manufacturer' },
+  { name: 'Russia',     coords: [60,   60],  hasVideo: false, label: 'Industrial foam' },
+];
+
+// Country ISO codes that have equipment (for coloring)
+const equipmentCountries = new Set([
+  'United States of America','Mexico','South Korea','China','Thailand',
+  'Vietnam','Indonesia','Malaysia','India','United Arab Emirates',
+  'Egypt','Brazil','Russia'
+]);
+
+const tooltip = document.getElementById('map-tooltip');
+
+function openModal(videoId, start) {
+  document.getElementById('modal-iframe').src =
+    `https://www.youtube.com/embed/${videoId}?start=${start}&autoplay=1&rel=0&modestbranding=1`;
+  document.getElementById('video-modal').classList.add('open');
+}
+function closeModal() {
+  document.getElementById('video-modal').classList.remove('open');
+  document.getElementById('modal-iframe').src = '';
+}
+document.getElementById('video-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+// Build map
+const width = Math.min(window.innerWidth, 1200);
+const height = width * 0.5;
+
+const svg = d3.select('#world-map')
+  .attr('viewBox', `0 0 ${width} ${height}`)
+  .attr('preserveAspectRatio', 'xMidYMid meet');
+
+const projection = d3.geoNaturalEarth1()
+  .scale(width / 6.4)
+  .translate([width / 2, height / 2]);
+
+const path = d3.geoPath().projection(projection);
+
+fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
+  .then(r => r.json())
+  .then(world => {
+    const countries = topojson.feature(world, world.objects.countries);
+
+    // Draw countries
+    svg.append('g')
+      .selectAll('path')
+      .data(countries.features)
+      .join('path')
+      .attr('class', d => {
+        const name = d.properties && d.properties.name;
+        return 'country' + (equipmentCountries.has(name) ? ' has-equipment' : '');
+      })
+      .attr('d', path);
+
+    // Draw graticule
+    svg.append('path')
+      .datum(d3.geoGraticule()())
+      .attr('fill', 'none')
+      .attr('stroke', 'rgba(255,255,255,0.04)')
+      .attr('stroke-width', 0.5)
+      .attr('d', path);
+
+    // Draw dots
+    const dotGroups = svg.append('g').selectAll('g.map-dot')
+      .data(locations)
+      .join('g')
+      .attr('class', d => 'map-dot' + (d.hasVideo ? ' has-video' : ''))
+      .attr('transform', d => {
+        const [x, y] = projection(d.coords);
+        return `translate(${x},${y})`;
+      })
+      .style('cursor', d => d.hasVideo ? 'pointer' : 'default');
+
+    // ripple
+    dotGroups.append('circle')
+      .attr('class', 'outer')
+      .attr('r', 12);
+
+    // dot
+    dotGroups.append('circle')
+      .attr('class', 'inner')
+      .attr('r', 5);
+
+    // tooltip
+    dotGroups
+      .on('mousemove', function(event, d) {
+        tooltip.style.opacity = '1';
+        tooltip.style.left = (event.clientX + 14) + 'px';
+        tooltip.style.top  = (event.clientY - 10) + 'px';
+        tooltip.querySelector('.tt-country').textContent = d.name;
+        tooltip.querySelector('.tt-info').textContent = d.label;
+        tooltip.querySelector('.tt-video').textContent = d.hasVideo ? '▶ Click to watch video' : '';
+      })
+      .on('mouseleave', () => { tooltip.style.opacity = '0'; })
+      .on('click', (event, d) => {
+        if (d.hasVideo) openModal(d.videoId, d.videoStart || 0);
+      });
+  });
+
+// Fade-up observer
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
