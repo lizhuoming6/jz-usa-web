@@ -18,54 +18,34 @@
 
 /* ── DEMO SHOWCASE ── */
 #demo {
-  padding: 80px 0 100px;
-  background: #08090e;
-  position: relative;
+  padding: 80px 0 120px;
+  background: var(--surface);
   overflow: hidden;
 }
-#demo::before {
-  content: '';
-  position: absolute;
-  top: -120px; left: 50%;
-  transform: translateX(-50%);
-  width: 800px; height: 300px;
-  background: radial-gradient(ellipse, rgba(42,91,212,0.18) 0%, transparent 70%);
-  pointer-events: none;
-}
 .demo-container {
-  max-width: 1160px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 40px;
+  perspective: 1200px;
 }
-.browser-frame {
+.demo-tilt {
+  transform: rotateX(6deg) scale(0.97);
+  transform-origin: center top;
+  transition: transform .6s ease;
   border-radius: 12px;
   overflow: hidden;
   box-shadow:
-    0 0 0 1px rgba(255,255,255,0.08),
-    0 32px 100px rgba(0,0,0,0.6),
-    0 0 80px rgba(42,91,212,0.15);
+    0 2px 0 1px rgba(0,0,0,0.04),
+    0 8px 24px rgba(0,0,0,0.06),
+    0 32px 80px rgba(0,0,0,0.12);
 }
-.browser-chrome {
-  background: #1c1c24;
-  padding: 10px 16px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+.demo-tilt:hover {
+  transform: rotateX(0deg) scale(1);
 }
-.browser-dots { display: flex; gap: 6px; }
-.browser-dots span { width: 12px; height: 12px; border-radius: 50%; }
-.browser-dots span:nth-child(1) { background: #ff5f57; }
-.browser-dots span:nth-child(2) { background: #febc2e; }
-.browser-dots span:nth-child(3) { background: #28c840; }
-.browser-bar {
-  flex: 1; background: #111118; border-radius: 4px; height: 22px;
-  display: flex; align-items: center; padding: 0 10px;
-  font-size: 11px; color: #555; font-family: monospace;
-}
-.browser-body { background: #fff; }
-.browser-body video {
+.demo-tilt video {
   width: 100%;
   display: block;
+  border-radius: 12px;
 }
 
 /* ── CAPABILITIES ── */
@@ -143,16 +123,10 @@
 <!-- Demo Video -->
 <section id="demo" style="padding-top: 96px;">
   <div class="demo-container fade-up">
-    <div class="browser-frame">
-      <div class="browser-chrome">
-        <div class="browser-dots"><span></span><span></span><span></span></div>
-        <div class="browser-bar">jingzheng-analytics · Live Dashboard</div>
-      </div>
-      <div class="browser-body">
-        <video autoplay muted loop playsinline>
-          <source src="demo.mp4" type="video/mp4">
-        </video>
-      </div>
+    <div class="demo-tilt">
+      <video autoplay muted loop playsinline>
+        <source src="demo.mp4" type="video/mp4">
+      </video>
     </div>
   </div>
 </section>
