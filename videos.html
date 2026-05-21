@@ -238,8 +238,16 @@
     <div class="region-block fade-up">
       <div class="region-title">East Asia</div>
       <div class="media-grid">
-        <div class="coming-soon"><strong>🇰🇷 Korea</strong>Media coming soon</div>
         <div class="coming-soon"><strong>🇨🇳 China</strong>Media coming soon</div>
+        <div class="coming-soon"><strong>🇯🇵 Japan</strong>Media coming soon</div>
+      </div>
+    </div>
+
+    <div class="region-block fade-up">
+      <div class="region-title">Europe & Russia</div>
+      <div class="media-grid">
+        <div class="coming-soon"><strong>🇸🇰 Slovakia</strong>Media coming soon</div>
+        <div class="coming-soon"><strong>🇷🇺 Russia</strong>Media coming soon</div>
       </div>
     </div>
 
@@ -267,6 +275,7 @@
       <div class="media-grid">
         <div class="coming-soon"><strong>🇮🇳 India</strong>Media coming soon</div>
         <div class="coming-soon"><strong>🇦🇪 UAE</strong>Media coming soon</div>
+        <div class="coming-soon"><strong>🇮🇷 Iran</strong>Media coming soon</div>
       </div>
     </div>
 
@@ -304,27 +313,26 @@
 // hasPhotos: true = amber dot (photos, add photoUrl + photoCaption)
 // neither = blue dot (equipment only)
 const locations = [
-  { name: 'USA',       coords: [-98,  38],  label: 'Automotive foam line' },
+  { name: 'USA',       coords: [-98,  38],  label: 'Foam production' },
   { name: 'Mexico',    coords: [-102, 23],  label: 'Furniture & automotive' },
-  { name: 'Korea',     coords: [128,  37],  label: 'Automotive seat plant' },
+  { name: 'Brazil',    coords: [-52, -14],  label: 'Furniture manufacturer' },
+  { name: 'Slovakia',  coords: [19,   48],  label: 'Industrial foam' },
+  { name: 'Russia',    coords: [60,   60],  label: 'Industrial foam' },
+  { name: 'Iran',      coords: [53,   32],  label: 'Foam products' },
+  { name: 'UAE',       coords: [54,   24],  label: 'Furniture & mattress' },
+  { name: 'India',     coords: [78,   22],  label: 'Automotive supplier' },
   { name: 'China',     coords: [104,  35],  label: 'Multiple installations' },
+  { name: 'Japan',     coords: [138,  36],  label: 'Foam production' },
   { name: 'Thailand',  coords: [101,  15],  label: 'Automotive supplier' },
   { name: 'Vietnam',   coords: [106,  16],  label: 'Furniture manufacturer' },
-  { name: 'Indonesia', coords: [118,  -2],  hasVideo: true, videoId: 'PSfK4_iqKyQ', videoStart: 69, label: 'Foam production line' },
   { name: 'Malaysia',  coords: [110,   4],  label: 'Furniture & bedding' },
-  { name: 'India',     coords: [78,   22],  label: 'Automotive supplier' },
-  { name: 'UAE',       coords: [54,   24],  label: 'Furniture & mattress' },
-  { name: 'Egypt',     coords: [30,   27],  label: 'Foam products' },
-  { name: 'Brazil',    coords: [-52, -14],  label: 'Furniture manufacturer' },
-  { name: 'Russia',    coords: [60,   60],  label: 'Industrial foam' },
-  // Example photo entry — uncomment and fill in when you have photos:
-  // { name: 'Korea', coords: [128, 37], hasPhotos: true, photoUrl: 'photos/korea.jpg', photoCaption: 'Korea – Automotive seat plant', label: 'Automotive seat plant' },
+  { name: 'Indonesia', coords: [118,  -2],  hasVideo: true, videoId: 'PSfK4_iqKyQ', videoStart: 69, label: 'Foam production line' },
 ];
 
 const equipmentCountries = new Set([
-  'United States of America','Mexico','South Korea','China','Thailand',
-  'Vietnam','Indonesia','Malaysia','India','United Arab Emirates',
-  'Egypt','Brazil','Russia'
+  'United States of America','Mexico','Brazil',
+  'Slovakia','Russia','Iran','United Arab Emirates',
+  'India','China','Japan','Thailand','Vietnam','Malaysia','Indonesia'
 ]);
 
 const tooltip = document.getElementById('map-tooltip');
