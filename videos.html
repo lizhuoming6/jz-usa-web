@@ -247,7 +247,17 @@
       <div class="region-title">Europe & Russia</div>
       <div class="media-grid">
         <div class="coming-soon"><strong>🇸🇰 Slovakia</strong>Media coming soon</div>
-        <div class="coming-soon"><strong>🇷🇺 Russia</strong>Media coming soon</div>
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/ynYvK2O1--A?rel=0&modestbranding=1"
+            title="JINGZHENG Equipment – Russia"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>
+          <div class="media-info">
+            <div class="media-flag">🇷🇺</div>
+            <div class="media-title">High-Pressure Foam Machine · Russia</div>
+            <div class="media-desc">Jingzheng equipment in operation on a Russian production line.</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -257,7 +267,7 @@
         <div class="coming-soon"><strong>🇹🇭 Thailand</strong>Media coming soon</div>
         <div class="coming-soon"><strong>🇻🇳 Vietnam</strong>Media coming soon</div>
         <div class="video-card">
-          <iframe src="https://www.youtube.com/embed/PSfK4_iqKyQ?start=69&rel=0&modestbranding=1"
+          <iframe src="https://www.youtube.com/embed/JdpaHyLLHSA?rel=0&modestbranding=1"
             title="JINGZHENG Equipment – Indonesia"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen loading="lazy"></iframe>
@@ -273,7 +283,17 @@
     <div class="region-block fade-up">
       <div class="region-title">South Asia & Middle East</div>
       <div class="media-grid">
-        <div class="coming-soon"><strong>🇮🇳 India</strong>Media coming soon</div>
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/w4YKjp6VucQ?rel=0&modestbranding=1"
+            title="JINGZHENG Equipment – India"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>
+          <div class="media-info">
+            <div class="media-flag">🇮🇳</div>
+            <div class="media-title">High-Pressure Foam Machine · India</div>
+            <div class="media-desc">Jingzheng equipment in operation on an Indian production line.</div>
+          </div>
+        </div>
         <div class="coming-soon"><strong>🇦🇪 UAE</strong>Media coming soon</div>
         <div class="coming-soon"><strong>🇮🇷 Iran</strong>Media coming soon</div>
       </div>
@@ -317,16 +337,16 @@ const locations = [
   { name: 'Mexico',    coords: [-102, 23],  label: 'Furniture & automotive' },
   { name: 'Brazil',    coords: [-52, -14],  label: 'Furniture manufacturer' },
   { name: 'Slovakia',  coords: [19,   48],  label: 'Industrial foam' },
-  { name: 'Russia',    coords: [60,   60],  label: 'Industrial foam' },
+  { name: 'Russia',    coords: [60,   60],  hasVideo: true, videoId: 'ynYvK2O1--A', label: 'Industrial foam' },
   { name: 'Iran',      coords: [53,   32],  label: 'Foam products' },
   { name: 'UAE',       coords: [54,   24],  label: 'Furniture & mattress' },
-  { name: 'India',     coords: [78,   22],  label: 'Automotive supplier' },
+  { name: 'India',     coords: [78,   22],  hasVideo: true, videoId: 'w4YKjp6VucQ', label: 'Automotive supplier' },
   { name: 'China',     coords: [104,  35],  label: 'Multiple installations' },
   { name: 'Japan',     coords: [138,  36],  label: 'Foam production' },
   { name: 'Thailand',  coords: [101,  15],  label: 'Automotive supplier' },
   { name: 'Vietnam',   coords: [106,  16],  label: 'Furniture manufacturer' },
   { name: 'Malaysia',  coords: [110,   4],  label: 'Furniture & bedding' },
-  { name: 'Indonesia', coords: [118,  -2],  hasVideo: true, videoId: 'PSfK4_iqKyQ', videoStart: 69, label: 'Foam production line' },
+  { name: 'Indonesia', coords: [118,  -2],  hasVideo: true, videoId: 'JdpaHyLLHSA', label: 'Foam production line' },
 ];
 
 const equipmentCountries = new Set([
